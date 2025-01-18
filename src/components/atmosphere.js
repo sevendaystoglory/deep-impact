@@ -5,15 +5,26 @@ const EarthAtmosphere = () => {
   const [zoomLevel, setZoomLevel] = useState(1);
 
   const handleZoomChange = (event) => {
-    setZoomLevel(parseFloat(event.target.value));
+    // Apply logarithmic scaling to make zooming smoother
+    const value = parseFloat(event.target.value);
+    const logZoom = Math.exp(value) / Math.E; // Normalize so zoom level 1 is at value 1
+    setZoomLevel(logZoom);
   };
 
   const getScaleLength = () => {
-    if (zoomLevel <= 0.1) return '1M km';
-    if (zoomLevel <= 0.3) return '500K km';
-    if (zoomLevel <= 0.5) return '100k km';
-    if (zoomLevel <= 0.7) return '50K km';
-    return '20K km';
+    // Base scale is 1000km at zoom level 1
+    const baseScale = 19;
+    // Calculate actual scale based on zoom level (inverse relationship)
+    const scale = baseScale / zoomLevel;
+    
+    // Format the scale appropriately
+    if (scale >= 1000) {
+      return `${(scale / 1000).toFixed(0)}M km`;
+    } else if (scale >= 100) {
+      return `${scale.toFixed(0)}K km`;
+    } else {
+      return `${scale.toFixed(1)}K km`;
+    }
   };
 
   const zoomStyle = {
@@ -29,10 +40,10 @@ const EarthAtmosphere = () => {
     <div className="atmosphere-container">
       <input
         type="range"
-        min="0.03"
-        max="1"
+        min="-2.5"
+        max="1.9"
         step="0.01"
-        value={zoomLevel}
+        value={Math.log(zoomLevel * Math.E)} // Inverse of the logZoom calculation
         onChange={handleZoomChange}
         className="zoom-slider"
       />
