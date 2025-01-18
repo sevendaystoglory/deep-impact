@@ -7,3 +7,4 @@ Source: -
 
 18-01-2025 23:21 I am thinking to make a really simple interface with lofi graphics. Earth to the left hand side, half visible. Grey. We'll have layers of grey depicting the desnsities of layers of atmosphere. Accurate to scale. Might want to add functionality for zoom since the lower blankets of atmosphere are really thin comparatively. 
 18-01-2025 23:29 I'm writing the data/atmosphere.md from the NASA source. The temperature variation of the atmosphere up until deep space s really interesting. Would be really cool to have a toggle that'd show the temperature variance of the system.
+19-01-2025 02:23 I am planning to implement some sort of logarthmic zooming to smoothen the zoom experience at high distances. I believe most cool things will happen at those distances.

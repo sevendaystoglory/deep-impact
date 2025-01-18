@@ -24,6 +24,7 @@
     width: var(--exosphere-size);
     border-top-right-radius: 1000000vh;
     border-bottom-right-radius: 1000000vh;
+    border: 1px solid rgba(255, 255, 255, 0.094);
     background-color: #03060a;
     transform: translate(calc(var(--exosphere-size) * (-0.5)), -50%);
     opacity: 1;
@@ -35,6 +36,7 @@
   width: var(--thermosphere-size);
   border-top-right-radius: 1000000vh;
   border-bottom-right-radius: 1000000vh;
+  border: 1px solid rgba(255, 255, 255, 0.094);
   background-color: #111827;
   transform: translate(calc(var(--thermosphere-size) * (-0.5)), -50%);
   opacity: 0.3;
@@ -46,8 +48,9 @@
   width: var(--mesophere-size);
   border-top-right-radius: 100000vh;
   border-bottom-right-radius: 100000vh;
+  border: 1px solid rgba(255, 255, 255, 0.094);
   background-color: #1F2937;
-  transform: translate(calc(var(--mesophere-size) * (-0.5)), -50%);
+  transform: translate(var(--mesosphere-left-shift), -50%);
   opacity: 0.3;
 }
 
@@ -57,8 +60,9 @@
   width: var(--stratosphere-size);
   border-top-right-radius: 10000vh;
   border-bottom-right-radius: 10000vh;
+  border: 1px solid rgba(255, 255, 255, 0.094);
   background-color: #374151;
-  transform: translate(calc(var(--stratosphere-size) * (-0.5)), -50%);
+  transform: translate(var(--stratosphere-left-shift), -50%);
   opacity: 0.35;
 }
 
@@ -67,9 +71,10 @@
   height: var(--troposphere-size);
   width: var(--troposphere-size);
   border-top-right-radius: 10000vh;
+  border: 1px solid rgba(80, 37, 37, 0.094);
   border-bottom-right-radius: 10000vh;
   background-color: #4B5563;
-  transform: translate(calc(var(--troposphere-size) * (-0.5)), -50%);
+  transform: translate(var(--troposphere-left-shift), -50%);
   opacity: 0.4;
 }
 
@@ -81,8 +86,10 @@
   width: var(--earth-size); 
   border-top-right-radius: 10000vh;
   border-bottom-right-radius: 10000vh;
-  transform: translate(calc(var(--earth-size)*(-0.5)), -50%); 
-  background-color: white;
+  border: 1px solid #03060ada;
+  /* fucking genius  */
+  transform: translate(min(calc(var(--earth-size)*(-0.5)), calc(var(--earth-size)*(-1)) + 30vw), -50%);
+  background-color: rgba(255, 255, 255, var(--earth-opacity));
 }
 
 .zoom-slider {
@@ -138,4 +145,25 @@
 .scale-label {
   font-size: 12px;
   text-align: center;
+}
+
+.moon {
+    top: 50%;
+    width: var(--moon-size);
+    height: var(--moon-size);
+    background-color: aqua;
+    border-radius: 50%;
+    bottom: calc(50% - var(--moon-size) / 2);
+    left: calc(50% - var(--moon-size) / 2);
+    transform: translateY(calc(-1 * var(--moon-distance)));
+}
+
+.moon-orbit {
+    top: 50%;
+    width: var(--moon-distance);
+    height: var(--moon-distance);
+    border: 3px solid rgba(255, 255, 255, 0.304);
+    border-top-right-radius: 1000000vh;
+    border-bottom-right-radius: 1000000vh;
+    transform: translate(calc(var(--moon-distance) * (-0.5)), -50%);
 }
