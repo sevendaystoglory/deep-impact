@@ -1,0 +1,12 @@
+"""
+File: data/atmosphere.md
+Description: Information on layers of atmosphere
+Source: https://science.nasa.gov/earth/earth-atmosphere/earths-atmosphere-a-multi-layered-cake/#:~:text=Earth's%20atmosphere%20has%20five%20major,Troposphere.
+"""
+
+Troposphere: 0 - 12,000M [Weather, Clouds, Aviation]
+Stratosphere: 12,000M - 50,000M [Basically nothing much other than occasional high-altitude jets. Ozone layer here absorbs UV rays from the sun.] 
+Mesosphere: 50,000M - 80,000M
+Thermosphere: 80,000M - 700,000M
+Exosphere: 700,000M - 10,000,000M
+The Edge of Outer Space:

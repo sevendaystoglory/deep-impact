@@ -1,0 +1,141 @@
+.atmosphere-container {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+.atmosphere-layers {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  left: 0;
+}
+
+.layer-exosphere {
+    top: 50%;
+    height: var(--exosphere-size);
+    width: var(--exosphere-size);
+    border-top-right-radius: 1000000vh;
+    border-bottom-right-radius: 1000000vh;
+    background-color: #03060a;
+    transform: translate(calc(var(--exosphere-size) * (-0.5)), -50%);
+    opacity: 1;
+  }
+
+.layer-thermosphere {
+  top: 50%;
+  height: var(--thermosphere-size);
+  width: var(--thermosphere-size);
+  border-top-right-radius: 1000000vh;
+  border-bottom-right-radius: 1000000vh;
+  background-color: #111827;
+  transform: translate(calc(var(--thermosphere-size) * (-0.5)), -50%);
+  opacity: 0.3;
+}
+
+.layer-mesosphere {
+  top: 50%;
+  height: var(--mesophere-size);
+  width: var(--mesophere-size);
+  border-top-right-radius: 100000vh;
+  border-bottom-right-radius: 100000vh;
+  background-color: #1F2937;
+  transform: translate(calc(var(--mesophere-size) * (-0.5)), -50%);
+  opacity: 0.3;
+}
+
+.layer-stratosphere {
+  top: 50%;
+  height: var(--stratosphere-size);
+  width: var(--stratosphere-size);
+  border-top-right-radius: 10000vh;
+  border-bottom-right-radius: 10000vh;
+  background-color: #374151;
+  transform: translate(calc(var(--stratosphere-size) * (-0.5)), -50%);
+  opacity: 0.35;
+}
+
+.layer-troposphere {
+  top: 50%;
+  height: var(--troposphere-size);
+  width: var(--troposphere-size);
+  border-top-right-radius: 10000vh;
+  border-bottom-right-radius: 10000vh;
+  background-color: #4B5563;
+  transform: translate(calc(var(--troposphere-size) * (-0.5)), -50%);
+  opacity: 0.4;
+}
+
+.earth {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: var(--earth-size); 
+  width: var(--earth-size); 
+  border-top-right-radius: 10000vh;
+  border-bottom-right-radius: 10000vh;
+  transform: translate(calc(var(--earth-size)*(-0.5)), -50%); 
+  background-color: white;
+}
+
+.zoom-slider {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  z-index: 10;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: #374151;
+  border-radius: 4px;
+  outline: none;
+}
+
+.zoom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.zoom-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.scale-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  color: white;
+  font-family: monospace;
+}
+
+.scale-bar {
+  width: 100px;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.scale-label {
+  font-size: 12px;
+  text-align: center;
+}
