@@ -4,6 +4,8 @@ This is an open-source tool born out of my obsession with memorizing distances i
 
 Try it out on [https://sevendaystoglory.github.io/deep-impact]!
 
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/01db5e14-a145-45a2-a1af-ea5e6ea4e912" />
+
 I’m documenting all the meaningful distances up to the orbit of the Moon. Think of it as a fun way to explore how far some of these orbits go, in a way that makes sense visually.
 
 ## How to Run It Locally
