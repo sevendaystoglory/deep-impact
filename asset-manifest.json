@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/deep-impact/static/css/main.a9fa0aa4.css",
+    "main.js": "/deep-impact/static/js/main.eb391cf2.js",
+    "index.html": "/deep-impact/index.html",
+    "main.a9fa0aa4.css.map": "/deep-impact/static/css/main.a9fa0aa4.css.map",
+    "main.eb391cf2.js.map": "/deep-impact/static/js/main.eb391cf2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a9fa0aa4.css",
+    "static/js/main.eb391cf2.js"
+  ]
+}
