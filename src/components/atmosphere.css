@@ -92,6 +92,17 @@
   background-color: rgba(255, 255, 255, var(--earth-opacity));
 }
 
+.earth::after {
+    content: "Earth";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .zoom-slider {
   position: fixed;
   bottom: 20px;
@@ -259,7 +270,7 @@
     top: 50%;
     width: var(--starlink-distance);
     height: var(--starlink-distance);
-    border: 1px solid rgba(255, 255, 255, var(--iss-orbit-opacity));
+    border: 1px solid rgba(255, 243, 82, var(--iss-orbit-opacity));
     border-top-right-radius: 1000000vh;
     border-bottom-right-radius: 1000000vh;
     transform: translate(calc(var(--starlink-distance) * (-0.5)), -50%);
@@ -268,7 +279,7 @@
 .starlink-orbit::after {
     content: "Starlink LEO";
     position: absolute;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 243, 82, 0.6);
     font-size: 12px;
     font-family: monospace;
     right:10px;
@@ -281,7 +292,7 @@
     top: 50%;
     width: var(--starlink-size);
     height: var(--starlink-size);
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 243, 82, 0.6);
     border-radius: 50%;
     transform-origin: calc(var(--starlink-distance) * (-0.5)) center;
     opacity: var(--starlink-opacity);
@@ -382,3 +393,66 @@
     transform: translateY(-50%);
 }
 
+.hubble-orbit {
+    top: 50%;
+    width: var(--hubble-distance);
+    height: var(--hubble-distance);
+    border: 2px solid rgba(97, 220, 255, var(--iss-orbit-opacity));
+    border-top-right-radius: 1000000vh;
+    border-bottom-right-radius: 1000000vh;
+    transform: translate(calc(var(--hubble-distance) * (-0.5)), -50%);
+}
+
+.hubble-orbit::after {
+    content: "Hubble Telescope";
+    position: absolute;
+    color: rgba(97, 220, 254, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-150%);
+}
+
+.hubble {
+    position: absolute;
+    top: 50%;
+    width: var(--hubble-size);
+    height: var(--hubble-size);
+    background-color: rgba(97, 220, 254, 0.6);
+    border-radius: 50%;
+    transform-origin: calc(var(--hubble-distance) * (-0.5)) center;
+    transform: translate(calc(var(--hubble-distance) * (0.5) - var(--hubble-size)*(0.75)), -50%);
+    opacity: 70%;
+    animation: hubble-orbit 220s linear infinite;
+}
+
+@keyframes hubble-orbit {
+    0% {
+        transform: translate(calc(var(--hubble-distance) * (0.5) - var(--hubble-size)*(0.75)), -50%) rotate(-20deg);
+    }
+    100% {
+        transform: translate(calc(var(--hubble-distance) * (0.5) - var(--hubble-size)*(0.75)), -50%) rotate(340deg);
+    }
+}
+
+.saturnV-orbit {
+    top: 50%;
+    width: var(--saturnV-distance);
+    height: var(--saturnV-distance);
+    border: 2px solid rgba(255, 243, 82, 0.2);
+    border-top-right-radius: 1000000vh;
+    border-bottom-right-radius: 1000000vh;
+    transform: translate(calc(var(--saturn-V-left-shift)), -50%);
+}
+
+.saturnV-orbit::after {
+    content: "Saturn V Stage 1";
+    position: absolute;
+    color: rgba(255, 243, 82, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}

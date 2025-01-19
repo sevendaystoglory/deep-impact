@@ -67,7 +67,7 @@ const EarthAtmosphere = () => {
     '--mesosphere-left-shift': `${getLayerLeftShift(earthOrbit * zoomLevel, 6458 * zoomLevel)}vh`,
     '--troposphere-left-shift': `${getLayerLeftShift(earthOrbit * zoomLevel, 6390 * zoomLevel)}vh`,
     '--stratosphere-left-shift': `${getLayerLeftShift(earthOrbit * zoomLevel, 6428)}vh`,
-
+    '--saturn-V-left-shift': `${getLayerLeftShift(earthOrbit * zoomLevel, 6443 * zoomLevel)}vh`,
     // opacity
     '--earth-opacity': Math.min(1, Math.max(0.4, 1 - (Math.log(zoomLevel * Math.E) + 6) / 6)),
     '--iss-orbit-opacity': Math.min(0.2, ((Math.log(zoomLevel * Math.E) + 6) / 6)-0.3),
@@ -76,6 +76,10 @@ const EarthAtmosphere = () => {
     '--starlink-size': `${16 * zoomLevel}vh`,
     '--num-starlinks': NUM_STARLINKS,
     '--airplane-size': `${10 * zoomLevel}vh`,
+    '--hubble-distance': `${(earthOrbit+515) * zoomLevel}vh`,
+    '--hubble-size': `${25 * zoomLevel}vh`,
+    '--saturnV-distance': `${(earthOrbit+65) * zoomLevel}vh`,
+    '--saturnV-size': `${15 * zoomLevel}vh`,
   };
 
   return (
@@ -114,6 +118,9 @@ const EarthAtmosphere = () => {
         <div className="layer layer-mesosphere" />
         <div className="layer layer-stratosphere" />
         <div className="layer layer-troposphere" />
+        <div className="layer hubble" />
+        <div className="layer hubble-orbit" />
+        <div className="layer saturnV-orbit" />
         <div className="earth" />
       </div>
     </div>
