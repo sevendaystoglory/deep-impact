@@ -148,22 +148,65 @@
 }
 
 .moon {
+    position: absolute;
     top: 50%;
     width: var(--moon-size);
     height: var(--moon-size);
-    background-color: aqua;
+    background-color: rgb(255, 255, 255);
     border-radius: 50%;
-    bottom: calc(50% - var(--moon-size) / 2);
-    left: calc(50% - var(--moon-size) / 2);
-    transform: translateY(calc(-1 * var(--moon-distance)));
+    transform-origin: calc(var(--moon-distance) * (-0.5)) center;
+    transform: translate(calc(var(--moon-distance) * (0.5) - var(--moon-size)*(0.75)), -50%);
+    opacity: 80%;
+    animation: moon-orbit 480s linear infinite;
+}
+
+@keyframes moon-orbit {
+    0% {
+        transform: translate(calc(var(--moon-distance) * (0.5) - var(--moon-size)*(0.75)), -50%) rotate(-20deg);
+    }
+    100% {
+        transform: translate(calc(var(--moon-distance) * (0.5) - var(--moon-size)*(0.75)), -50%) rotate(340deg);
+    }
 }
 
 .moon-orbit {
     top: 50%;
     width: var(--moon-distance);
     height: var(--moon-distance);
-    border: 3px solid rgba(255, 255, 255, 0.304);
+    border: 10px solid rgba(255, 255, 255, 0.064);
     border-top-right-radius: 1000000vh;
     border-bottom-right-radius: 1000000vh;
     transform: translate(calc(var(--moon-distance) * (-0.5)), -50%);
+}
+
+.iss-orbit {
+    top: 50%;
+    width: var(--iss-distance);
+    height: var(--iss-distance);
+    border: 2px solid rgba(255, 255, 255, var(--iss-orbit-opacity));
+    border-top-right-radius: 1000000vh;
+    border-bottom-right-radius: 1000000vh;
+    transform: translate(calc(var(--iss-distance) * (-0.5)), -50%);
+}
+
+.iss {
+    position: absolute;
+    top: 50%;
+    width: var(--iss-size);
+    height: var(--iss-size);
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    transform-origin: calc(var(--iss-distance) * (-0.5)) center;
+    transform: translate(calc(var(--iss-distance) * (0.5) - var(--iss-size)*(0.75)), -50%);
+    opacity: 60%;
+    animation: iss-orbit 300s linear infinite;
+}
+
+@keyframes iss-orbit {
+    0% {
+        transform: translate(calc(var(--iss-distance) * (0.5) - var(--iss-size)*(0.75)), -50%) rotate(-20deg);
+    }
+    100% {
+        transform: translate(calc(var(--iss-distance) * (0.5) - var(--iss-size)*(0.75)), -50%) rotate(340deg);
+    }
 }
