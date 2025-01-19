@@ -3,7 +3,15 @@ import './atmosphere.css';
 
 const EarthAtmosphere = () => {
   const [zoomLevel, setZoomLevel] = useState(1);
-  const earhOrbit = 6387;
+  const earthOrbit = 6387;
+  const NUM_STARLINKS = 24; // Easy to change number of satellites
+
+  // Generate array of Starlink satellites
+  const starlinkSatellites = Array.from({ length: NUM_STARLINKS }, (_, index) => ({
+    id: `starlink-${index + 1}`,
+    rotationOffset: (360 / NUM_STARLINKS) * index, // Evenly space satellites
+  }));
+
   const handleZoomChange = (event) => {
     // Apply logarithmic scaling to make zooming smoother
     const value = parseFloat(event.target.value);
@@ -13,7 +21,7 @@ const EarthAtmosphere = () => {
 
   const getScaleLength = () => {
     // Base scale is 1000km at zoom level 1
-    const baseScale = 0.05;
+    const baseScale = 0.03;
     // Calculate actual scale based on zoom level (inverse relationship)
     const scale = baseScale / zoomLevel;
     
@@ -40,21 +48,34 @@ const EarthAtmosphere = () => {
 
 
   const zoomStyle = {// Values are fetched from data/atmosphere
-    '--earth-size': `${earhOrbit * zoomLevel}vh`,
-    '--troposphere-size': `${(earhOrbit+18) * zoomLevel}vh`,
-    '--stratosphere-size': `${(earhOrbit+50) * zoomLevel}vh`,
-    '--mesophere-size': `${(earhOrbit+80) * zoomLevel}vh`,
-    '--thermosphere-size': `${(earhOrbit+700) * zoomLevel}vh`,
-    '--exosphere-size': `${(earhOrbit+10000) * zoomLevel}vh`,
+    '--earth-size': `${earthOrbit * zoomLevel}vh`,
+    '--troposphere-size': `${(earthOrbit+18) * zoomLevel}vh`,
+    '--stratosphere-size': `${(earthOrbit+50) * zoomLevel}vh`,
+    '--mesophere-size': `${(earthOrbit+80) * zoomLevel}vh`,
+    '--thermosphere-size': `${(earthOrbit+700) * zoomLevel}vh`,
+    '--exosphere-size': `${(earthOrbit+10000) * zoomLevel}vh`,
     '--moon-distance': `${300000 * zoomLevel}vh`,
-    '--iss-distance':`${(earhOrbit+400) * zoomLevel}vh`,
+    '--iss-distance': `${(earthOrbit+400) * zoomLevel}vh`,
+    '--starlink-distance': `${(earthOrbit+550) * zoomLevel}vh`,
+    '--geostationary-orbit': `${(earthOrbit+35786) * zoomLevel}vh`,
     '--moon-size': `${1737 * zoomLevel}vh`,
     '--iss-size': `${30 * zoomLevel}vh`,
-    '--mesosphere-left-shift': `${getLayerLeftShift(6378 * zoomLevel, 6458 * zoomLevel)}vh`,
-    '--troposphere-left-shift': `${getLayerLeftShift(6378 * zoomLevel, 6390 * zoomLevel)}vh`,
-    '--stratosphere-left-shift': `${getLayerLeftShift(6378 * zoomLevel, 6428)}vh`,
+    '--airplane-orbit': `${((earthOrbit+10) * zoomLevel)}vh`,
+
+    // near earth zone orbit leftshit
+    '--airplane-orbit-left-shift': `${getLayerLeftShift(earthOrbit * zoomLevel, (earthOrbit+10) * zoomLevel)}vh`,
+    '--mesosphere-left-shift': `${getLayerLeftShift(earthOrbit * zoomLevel, 6458 * zoomLevel)}vh`,
+    '--troposphere-left-shift': `${getLayerLeftShift(earthOrbit * zoomLevel, 6390 * zoomLevel)}vh`,
+    '--stratosphere-left-shift': `${getLayerLeftShift(earthOrbit * zoomLevel, 6428)}vh`,
+
+    // opacity
     '--earth-opacity': Math.min(1, Math.max(0.4, 1 - (Math.log(zoomLevel * Math.E) + 6) / 6)),
     '--iss-orbit-opacity': Math.min(0.2, ((Math.log(zoomLevel * Math.E) + 6) / 6)-0.3),
+    '--starlink-opacity': Math.min(1, ((Math.log(zoomLevel * Math.E) + 6) / 6)-0.1),
+    '--airplane-opacity': Math.min(1, ((Math.log(zoomLevel * Math.E) + 6) / 6)-0.1),
+    '--starlink-size': `${16 * zoomLevel}vh`,
+    '--num-starlinks': NUM_STARLINKS,
+    '--airplane-size': `${10 * zoomLevel}vh`,
   };
 
   return (
@@ -75,8 +96,19 @@ const EarthAtmosphere = () => {
       <div className="atmosphere-layers" style={zoomStyle}>
         <div className="layer moon"/>
         <div className="layer moon-orbit" />
+        <div className="layer geostationary-orbit" />
         <div className="layer layer-exosphere" />
         <div className="layer layer-thermosphere" />
+        <div className="layer starlink-orbit" />
+        <div className="layer airplane-orbit" />
+        <div className="layer airplane" />
+        {starlinkSatellites.map(({ id, rotationOffset }) => (
+          <div 
+            key={id} 
+            className="layer starlink" 
+            style={{ '--starlink-rotation-offset': `${rotationOffset}deg` }}
+          />
+        ))}
         <div className="layer iss" />
         <div className="layer iss-orbit" />
         <div className="layer layer-mesosphere" />

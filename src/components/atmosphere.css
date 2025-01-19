@@ -177,6 +177,18 @@
     border-top-right-radius: 1000000vh;
     border-bottom-right-radius: 1000000vh;
     transform: translate(calc(var(--moon-distance) * (-0.5)), -50%);
+    position: relative;
+}
+
+.moon-orbit::after {
+    content: "Moon Orbit";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .iss-orbit {
@@ -189,6 +201,17 @@
     transform: translate(calc(var(--iss-distance) * (-0.5)), -50%);
 }
 
+.iss-orbit::after {
+    content: "ISS Orbit";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(50%);
+}
+
 .iss {
     position: absolute;
     top: 50%;
@@ -198,8 +221,8 @@
     border-radius: 50%;
     transform-origin: calc(var(--iss-distance) * (-0.5)) center;
     transform: translate(calc(var(--iss-distance) * (0.5) - var(--iss-size)*(0.75)), -50%);
-    opacity: 60%;
-    animation: iss-orbit 300s linear infinite;
+    opacity: 70%;
+    animation: iss-orbit 200s linear infinite;
 }
 
 @keyframes iss-orbit {
@@ -210,3 +233,152 @@
         transform: translate(calc(var(--iss-distance) * (0.5) - var(--iss-size)*(0.75)), -50%) rotate(340deg);
     }
 }
+
+.geostationary-orbit {
+    top: 50%;
+    width: var(--geostationary-orbit);
+    height: var(--geostationary-orbit);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-right-radius: 1000000vh;
+    border-bottom-right-radius: 1000000vh;
+    transform: translate(calc(var(--geostationary-orbit) * (-0.5)), -50%);
+}
+
+.geostationary-orbit::after {
+    content: "Geostationary Orbit";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.starlink-orbit {
+    top: 50%;
+    width: var(--starlink-distance);
+    height: var(--starlink-distance);
+    border: 1px solid rgba(255, 255, 255, var(--iss-orbit-opacity));
+    border-top-right-radius: 1000000vh;
+    border-bottom-right-radius: 1000000vh;
+    transform: translate(calc(var(--starlink-distance) * (-0.5)), -50%);
+}
+
+.starlink-orbit::after {
+    content: "Starlink LEO";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right:10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.starlink {
+    position: absolute;
+    top: 50%;
+    width: var(--starlink-size);
+    height: var(--starlink-size);
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    transform-origin: calc(var(--starlink-distance) * (-0.5)) center;
+    opacity: var(--starlink-opacity);
+    /* Initial rotation based on offset, then animate */
+    transform: 
+        translate(calc(var(--starlink-distance) * (0.5) - var(--starlink-size)*(0.75)), -50%)
+        rotate(var(--starlink-rotation-offset));
+    animation: starlink-orbit 240s linear infinite;
+}
+
+@keyframes starlink-orbit {
+    from {
+        transform: 
+            translate(calc(var(--starlink-distance) * (0.5) - var(--starlink-size)*(0.75)), -50%)
+            rotate(var(--starlink-rotation-offset));
+    }
+    to {
+        transform: 
+            translate(calc(var(--starlink-distance) * (0.5) - var(--starlink-size)*(0.75)), -50%)
+            rotate(calc(var(--starlink-rotation-offset) + 360deg));
+    }
+}
+
+.airplane-orbit {
+    top: 50%;
+    width: var(--airplane-orbit);
+    height: var(--airplane-orbit);
+    border: 1px solid rgb(255, 255, 255, var(--airplane-opacity));
+    border-top-right-radius: 1000000vh;
+    border-bottom-right-radius: 1000000vh;
+    transform: translate(calc(var(--airplane-orbit-left-shift)), -50%);
+    z-index: 2;
+}
+
+.airplane-orbit::after {
+    content: "Airplane";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.layer-exosphere::after {
+    content: "Exosphere";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.layer-thermosphere::after {
+    content: "Thermosphere";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-200%);
+}
+
+.layer-mesosphere::after {
+    content: "Mesosphere";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.layer-stratosphere::after {
+    content: "Stratosphere";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.layer-troposphere::after {
+    content: "Troposphere";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-family: monospace;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
